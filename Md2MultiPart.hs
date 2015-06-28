@@ -1,9 +1,13 @@
 import System.Environment
--- import Text.Pandoc
+import Data.Either.Unwrap
+import Text.Pandoc
 
 -- | 'main' runs the main program
 main :: IO ()
-main = getArgs >>= print . haqify . head
+main = print pandocConverted
 
-haqify :: String -> String
-haqify s = "Haq! " ++ s
+textToConvert = unlines [ "Hello World.\n"
+                        , "    this is a Markdown code block\n"
+                        , "[This is a link](http://www.latermuse.com/)\n" ]
+pandocParsed = readMarkdown def textToConvert
+pandocConverted = writeHtmlString def $ fromRight pandocParsed
