@@ -21,7 +21,6 @@ executable md2multipart
   -- other-modules:       
   -- other-extensions:    
   build-depends:       base >=4.6 && <4.7,
-                       either-unwrap,
                        pandoc
   -- hs-source-dirs:      
   default-language:    Haskell2010
